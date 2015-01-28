@@ -1,8 +1,8 @@
 Pandora Downloader
 ==================
-This is a simple project that uses a google chrome extension to interface with Pandora, to add a little download button to download songs.
+This is a simple project that uses a google chrome extension to interface with Pandora, to download every played song.
 
-It uses a small python Flask web server to handle the downloading and sorting of the song
+It uses a small python Flask web server to handle the downloading and sorting of the songs.
 
 Installation
 ============
@@ -50,15 +50,6 @@ Check the *Developer Mode* box.
 Click *Load unpacked extension...*
 
 Navigate to the pandora-downloader folder, and viola you've got the extension running.
-
-Pictures
-========
-
-The download button on the page
-![Displaying the download button](http://i.imgur.com/Z3iBxT4.png "Download Button")
-
-The message box letting you know the song was downloaded
-![Message box displaying that the song was downloaded](http://i.imgur.com/fYyJz5g.png "Message box")
 
 Notes
 =====

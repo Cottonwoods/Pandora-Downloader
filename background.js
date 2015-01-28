@@ -8,13 +8,11 @@ $( function() {
 
         // Test the url against a regex of the different locations the songs live!
         if ( details.url.match( /(http.*\.pandora.com\/access\/.*)/i ) ) {
-
             // Save the url for later
-            currentSongUrl = details.url
+            currentSongUrl = details.url;
         }
     },
     { urls: ['<all_urls>'] });
-
 
     function send_info( message ) {
         var d = new Date();
@@ -38,7 +36,6 @@ $( function() {
 
         // If no song url has been captured don't do anything
         if ( currentSongUrl === undefined ) {
-            send_info( 'The song url hasn\'t been captured! Skip to the next song, and get this one later.' );
             return 0;
         }
 
@@ -62,6 +59,9 @@ $( function() {
                 if ( data.status == 'success' ) {
                     send_info( song + ' has been successfully downloaded!' )
                 }
+
+                // Reset song url between downloads
+                currentSongUrl = undefined;
             },
             dataType: 'json',
             async: false

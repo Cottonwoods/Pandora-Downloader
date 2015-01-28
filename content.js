@@ -1,19 +1,22 @@
 $( function() {
-    // Append the download button next to your username
-    $('#brandingBar .rightcolumn').before('<div class="pandora-downloader"><button>Download</button></div>');
-
     // The info box!
     $('body').append('<div class="pandora-downloader-infobox"></div>')
 
-    // Add functionality to the download button.
-    $('#brandingBar').on( 'click', '.pandora-downloader button', function() {
+    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-        // Send the download request/song information to the background manager
+    var observer = new MutationObserver(function(mutations, observer) {
         chrome.runtime.sendMessage({
             title:  $('.songTitle')    .text(),
             artist: $('.artistSummary').text(),
             album:  $('.albumTitle')   .text(),
         }, function( response ) {} );
+    });
+
+    var target = $('#trackInfo');
+    observer.observe(target[0], {
+      subtree: true,
+      attributes: true,
+      characterData: true
     });
 
     chrome.runtime.onMessage.addListener( function( request, sender, sendResponse ) {
@@ -31,5 +34,4 @@ $( function() {
             .delay( 3000 )
             .fadeOut( 400 );
     }
-
 })
